@@ -1,0 +1,19 @@
+package com.renejm.PeliFrases;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class FraseService {
+    @Autowired
+    private FraseRepository repository;
+
+    public FraseDTO obtenerFraseRandom() {
+        Frase frase = repository.obtenerFrase();
+        return new FraseDTO(
+                frase.getTitulo(),
+                frase.getFrase(),
+                frase.getPersonaje(),
+                frase.getPoster());
+    }
+}
